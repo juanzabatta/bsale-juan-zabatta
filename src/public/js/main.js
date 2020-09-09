@@ -9,6 +9,13 @@ let numOfProducts = 0;
 let productsForPage = 20;
 let page = 1;
 let urlApi;
+let urlBaseApi;
+
+if (document.domain === "bsale-juanzabatta.herokuapp.com") {
+  urlBaseApi = "https://bsale-juanzabatta.herokuapp.com/";
+} else {
+  urlBaseApi = "http://localhost:3000/";
+}
 
 loading.style.display = "flex";
 
@@ -58,7 +65,7 @@ getProducts()
 // Get products of API
 async function getProducts() {
   try {
-    let response = await fetch('http://localhost:3000/api/' + urlApi, { method: 'GET' });
+    let response = await fetch(urlBaseApi + 'api/' + urlApi, { method: 'GET' });
     let data = await response.json();
     db = await data;
     loading.style.display = "none";
