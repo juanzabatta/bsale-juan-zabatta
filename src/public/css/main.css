@@ -1,0 +1,156 @@
+*{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+button,
+input{
+  outline: none;
+}
+
+/* ========================================
+----------------- Header ------------------
+=========================================== */
+header{
+  display: flex;
+  height: 80px;
+  width: 100%;
+  background-color: white;
+  color: #555;
+}
+header #container-header{
+  display: flex;
+  width: 80%;
+  margin: auto;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+header #container-header .content-header{
+  display: flex;
+  width: auto;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+header #container-header .content-header h1{
+  margin-right: 20px;
+}
+header #container-header .content-header form{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 20px;
+}
+header #container-header .content-header form input{
+  border: none;
+  height: 30px;
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+}
+header #container-header .content-header form button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  overflow: hidden;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+}
+header #container-header .content-header form button img{
+  height: 20px;
+}
+header #container-header .content-header a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+  border: none;
+  border-radius: 100%;
+  background-color: white;
+  cursor: pointer;
+}
+header #container-header .content-header a img{
+  height: 35px;
+}
+
+/* ========================================
+----------------- Main --------------------
+=========================================== */
+main{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: calc(100vh - 130px);
+  background-color: #eee;
+  box-shadow: 0px 2px 4px #aaa inset, 0px 2px 8px #ddd inset,0px -2px 4px #aaa inset, 0px -2px 8px #ddd inset;
+}
+
+/* ========================================
+----------- Pagination Products -----------
+=========================================== */
+main #pagination{
+  display: none;
+  width: 80%;
+  height: 50px;
+  margin: 20px auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+main #pagination button{
+  background-color: white;
+  color:  #555;
+  margin: 5px;
+  height: 40px;
+  width: 40px;
+  border: none;
+  cursor: pointer;
+  border-radius: 100%;
+  box-shadow: 0px 2px 4px #aaa , 0px 0px 8px #ddd;
+}
+main #pagination button:hover{
+  transform: scale(1.1 ,1.1);
+  transition: all 300ms;
+}
+main #pagination .active{
+  background-color: #555;
+  color: white;
+}
+
+/* ========================================
+----------------- Footer ------------------
+=========================================== */
+footer{
+  display: flex;
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  color: #555;
+}
+footer #container-footer{
+  display: flex;
+  width: 80%;
+  margin: auto;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ========================================
+---------------- Responsive ---------------
+=========================================== */
+@media screen and (max-width: 1345px) {
+  header #container-header,
+  main #pagination,
+  footer #container-footer{
+    width: calc(100% - 40px);
+    margin: 20px;
+  }
+}

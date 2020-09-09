@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/list-products.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <link rel="stylesheet" href="css/alert.css">
+
+
+  <meta name="description"
+    content="Somos la tienda online con las mejores bebidas y los snacks más deliciosos, a los mejores precios, no te pierdas los mayores descuentos y ofertas de todo Chile.">
+  <title>Bsale | Las mejores bebidas y los snacks más deliciosos, al mejor precio.</title>
+</head>
+
+<body onresize="responsive()">
+  <header>
+    <div id="container-header">
+      <section class="content-header">
+        <h1>Bsale Test</h1>
+        <p>Tienda</p>
+      </section>
+
+      <section class="content-header">
+        <form method="GET">
+          <input type="text" name="search" id="search" placeholder="Buscar...">
+          <button id="btn-search" type="submit">
+            <img src="./img/search.webp" alt="Buscar">
+          </button>
+        </form>
+
+        <a href="#">
+          <img src="./img/cart-icon-2.webp" alt="Carrito" title="Ir al carrito" />
+        </a>
+      </section>
+    </div>
+  </header>
+
+  <main>
+    <section id="container-cards"></section>
+
+    <section id="pagination">
+      <button onclick="prevPage()">&lt;</button>
+      <button onclick="nextPage()">&gt;</button>
+    </section>
+  </main>
+
+  <footer>
+    <div id="container-footer">
+      <p>La mejor calidad al mejor precio.</p>
+    </div>
+
+  </footer>
+
+  <div id="contain-loader">
+    <div class="loader">Loading...</div>
+  </div>
+
+  <div id="alert-container">
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

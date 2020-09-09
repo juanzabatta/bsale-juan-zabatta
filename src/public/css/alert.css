@@ -1,0 +1,54 @@
+/* ========================================
+------------------ Alert ------------------
+=========================================== */
+#alert-container {
+	position: fixed;
+	z-index: 4;
+	top: 0;
+	left: 0;
+	height: 100%;
+  width: 100%;
+  display: none;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.486);
+}
+#alert-container #alert {
+	position: relative;
+	height: 300px;
+	width: 400px;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+/*-------- button close ---------*/
+#alert-container #alert button {
+	position: absolute;
+	border: none;
+	outline: none;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+	background-color: white;
+	height: 40px;
+	width: 40px;
+}
+#alert-container #alert button:hover {
+	color: red;
+}
+/*-------- img error ---------*/
+#alert-container #alert img {
+	height: 100px;
+	width: 100px;
+}
+/*---------- title -----------*/
+#alert-container #alert #title-alert {
+	text-align: center;
+	font-weight: bold;
+}
+/*---------- message -----------*/
+#alert-container #alert #message-alert {
+	text-align: center;
+}
