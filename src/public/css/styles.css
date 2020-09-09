@@ -123,6 +123,7 @@ nav ul{
   display: flex;
   height: 60px;
   width: 80%;
+  margin: auto;
   flex-direction: row;
   list-style: none;
   flex-wrap: wrap;
