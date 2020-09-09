@@ -5,18 +5,23 @@ const listProduct = document.getElementById('container-cards');
 const loading = document.getElementById('contain-loader');
 const alertContainer = document.getElementById('alert-container');
 const pagination = document.getElementById('pagination');
+const menuDropDown = document.getElementById('menu-drop-down');
+const menuIcon = document.getElementById('menu-icon');
+let showMenu = false;
 let numOfProducts = 0;
 let productsForPage = 20;
 let page = 1;
 let urlApi;
 let urlBaseApi;
 
+// Get the navigation url and set the base url for the API query
 if (document.domain === "bsale-juanzabatta.herokuapp.com") {
   urlBaseApi = "https://bsale-juanzabatta.herokuapp.com/";
 } else {
   urlBaseApi = "http://localhost:3000/";
 }
 
+// Show loading
 loading.style.display = "flex";
 
 // Get url Parameters
@@ -132,6 +137,19 @@ function showAlert(title, message) {
   alertContainer.style.display = "flex";
 };
 
+// Show / Hidden menu in phone Views
+menuIcon.addEventListener('click', () => {
+  showMenu = !showMenu;
+
+  if (showMenu) {
+    menuDropDown.style.display = "flex";
+    menuIcon.classList.add('change');
+  } else {
+    menuDropDown.style.display = "none";
+    menuIcon.classList.remove('change');
+  };
+});
+
 /* ========================================
 --------------- Pagination ----------------
 =========================================== */
@@ -142,41 +160,62 @@ function numPages() {
 
 // Btn Prev - go to previous page
 function prevPage() {
+  // In phone views this button is go to first page and not go to previous page
   let prevPage = 1;
 
-  if (page - 1 > 0) {
-    prevPage = page - 1;
-    page--;
+  if (window.innerWidth > 650) {
+    // In normal views this button is previous page
+
+    if (page - 1 > 0) {
+      prevPage = page - 1;
+      page--;
+    };
   };
+
   renderPage(prevPage);
 };
 
 // Btn Next - go to next page
 function nextPage() {
-  let nextPage = numPages();
+  const lastPage = numPages();
+  // In phone views this button is go to last page and not go to next page
+  let nextPage = lastPage;
 
-  if (page + 1 <= nextPage) {
-    nextPage = page + 1;
-    page++;
-  };
+  if (window.innerWidth > 650) {
+    // In normal views this button is next page
+    if (page + 1 <= lastPage) {
+      nextPage = page + 1;
+      page++;
+    };
+  }
+
   renderPage(nextPage);
 };
 
 // Write the necessary buttons according to the number of pages
 function paginationNum() {
-  const numPage = numPages();
-  if (numPage > 1) {
-    pagination.style.display = "flex";
-  }
+  const lastPage = numPages();
 
-  pagination.innerHTML = `<button onclick="prevPage()">&lt;</button>`;
+  // Shows the pagination if the number of pages is greater than 1
+  if (lastPage > 1) {
+    pagination.style.display = "flex";
+  };
 
   if (window.innerWidth <= 650) {
+    // Phone mode - write 5 buttons only
+    pagination.innerHTML = `<button onclick="prevPage()">&lt;&lt;</button>`;
+
     if (page === 1) {
       pagination.innerHTML += `
       <button id="page-${page}" onClick="renderPage(${page})" class="btn-page">${page}</button>
       <button id="page-${page + 1}" onClick="renderPage(${page + 1})" class="btn-page">${page + 1}</button>
       <button id="page-${page + 2}" onClick="renderPage(${page + 2})" class="btn-page">${page + 2}</button>
+      `;
+    } else if (page === lastPage) {
+      pagination.innerHTML += `
+      <button id="page-${page - 2}" onClick="renderPage(${page - 2})" class="btn-page">${page - 2}</button>
+      <button id="page-${page - 1}" onClick="renderPage(${page - 1})" class="btn-page">${page - 1}</button>
+      <button id="page-${page}" onClick="renderPage(${page})" class="btn-page">${page}</button>
       `;
     } else {
       pagination.innerHTML += `
@@ -185,17 +224,21 @@ function paginationNum() {
       <button id="page-${page + 1}" onClick="renderPage(${page + 1})" class="btn-page">${page + 1}</button>
       `;
     }
+    pagination.innerHTML += `<button onclick="nextPage()">&gt;&gt;</button>`;
 
   } else {
-    for (let i = 1; i <= numPage; i++) {
+    // Normal mode - write all buttons
+    pagination.innerHTML = `<button onclick="prevPage()">&lt;</button>`;
+
+    for (let i = 1; i <= lastPage; i++) {
       pagination.innerHTML += `
       <button id="page-${i}" onClick="renderPage(${i})" class="btn-page">${i}</button>
       `;
     };
-  }
+    pagination.innerHTML += `<button onclick="nextPage()">&gt;</button>`;
 
+  };
 
-  pagination.innerHTML += `<button onclick="nextPage()">&gt;</button>`;
 };
 
 // Determines which products will be written according to the page on which this
@@ -204,7 +247,7 @@ function renderPage(pageAct) {
   page = pageAct;
 
   for (let i = (page - 1) * productsForPage; i < page * productsForPage; i++) {
-    if (isNaN(db[i]) && db[i] != undefined) {
+    if (db && isNaN(db[i]) && db[i] != undefined) {
       productsDisplay.push(db[i]);
     };
   };
@@ -235,7 +278,9 @@ function pageActive() {
     btnsPagination.classList.remove("active");
   }
 
-  document.getElementById('page-' + page).className += " active";
+  const pageActive = document.getElementById('page-' + page);
+  if (pageActive) pageActive.className += " active";
+
 };
 
 // Determines the number of products per page, according to the width of the screen

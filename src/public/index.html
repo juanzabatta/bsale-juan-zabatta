@@ -4,26 +4,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- import CSS files -->
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/list-products.css">
+  <link rel="stylesheet" href="css/main-content.css">
   <link rel="stylesheet" href="css/loader.css">
   <link rel="stylesheet" href="css/alert.css">
 
+  <!-- import favicon -->
   <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+
+  <!-- SEO -->
   <meta name="description"
     content="Somos la tienda online con las mejores bebidas y los snacks más deliciosos, a los mejores precios, no te pierdas los mayores descuentos y ofertas de todo Chile.">
   <title>Bsale | Las mejores bebidas y los snacks más deliciosos, al mejor precio.</title>
 </head>
 
 <body onresize="responsive()">
+  <!-- Header -->
   <header>
-    <div id="container-header">
-      <section class="content-header">
+    <section id="container-header">
+      <div class="content-header">
         <h1>Bsale Test</h1>
         <p>Tienda</p>
-      </section>
 
-      <section class="content-header">
+        <div id="menu-icon">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+      </div>
+
+      <div id="menu-drop-down" class="content-header">
         <form method="GET">
           <input type="text" name="search" id="search" placeholder="Buscar...">
           <button id="btn-search" type="submit">
@@ -34,19 +45,23 @@
         <a href="#">
           <img src="./img/cart-icon-2.webp" alt="Carrito" title="Ir al carrito" />
         </a>
-      </section>
-    </div>
+      </div>
+    </section>
   </header>
 
+  <!-- Main content -->
   <main>
-    <section id="container-cards"></section>
+    <section id="container-cards">
+      <h2>All Products</h2>
+    </section>
 
-    <section id="pagination">
+    <div id="pagination">
       <button onclick="prevPage()">&lt;</button>
       <button onclick="nextPage()">&gt;</button>
-    </section>
+    </div>
   </main>
 
+  <!-- Footer -->
   <footer>
     <div id="container-footer">
       <p>La mejor calidad al mejor precio.</p>
@@ -54,13 +69,16 @@
 
   </footer>
 
+  <!-- Loading -->
   <div id="contain-loader">
     <div class="loader">Loading...</div>
   </div>
 
+  <!-- Alert -->
   <div id="alert-container">
   </div>
 
+  <!-- Scripts -->
   <script src="js/main.js"></script>
 </body>
 

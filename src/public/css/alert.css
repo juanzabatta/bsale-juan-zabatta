@@ -46,7 +46,8 @@
 /*---------- title -----------*/
 #alert-container #alert #title-alert {
 	text-align: center;
-	font-weight: bold;
+  font-weight: bold;
+  margin: 10px auto;
 }
 /*---------- message -----------*/
 #alert-container #alert #message-alert {

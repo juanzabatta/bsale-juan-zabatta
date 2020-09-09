@@ -1,4 +1,16 @@
 /* ========================================
+----------------- Main --------------------
+=========================================== */
+main{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: calc(100vh - 130px);
+  background-color: #eee;
+  box-shadow: 0px 2px 4px #aaa inset, 0px 2px 8px #ddd inset,0px -2px 4px #aaa inset, 0px -2px 8px #ddd inset;
+}
+
+/* ========================================
 -------------- List Products --------------
 =========================================== */
 main #container-cards{
@@ -21,6 +33,10 @@ main #container-cards .card{
   box-shadow: 0px 2px 4px #aaa , 0px 0px 8px #ddd;
   cursor: pointer;
   text-decoration: none;
+  transition: all 300ms;
+}
+main #container-cards .card:hover{
+  transform: scale(1.05, 1.05);
 }
 
 /********* Card image ********/
@@ -85,12 +101,51 @@ main #container-cards .card .card-content  button img{
 }
 
 /* ========================================
+----------- Pagination Products -----------
+=========================================== */
+main #pagination{
+  display: none;
+  width: 80%;
+  height: 50px;
+  margin: 20px auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+main #pagination button{
+  background-color: white;
+  color:  #555;
+  margin: 5px;
+  height: 40px;
+  width: 40px;
+  border: none;
+  cursor: pointer;
+  border-radius: 100%;
+  box-shadow: 0px 2px 4px #aaa , 0px 0px 8px #ddd;
+}
+main #pagination button:hover{
+  transform: scale(1.1 ,1.1);
+  transition: all 300ms;
+}
+main #pagination .active{
+  background-color: #555;
+  color: white;
+}
+
+/* ========================================
 ---------------- Responsive ---------------
 =========================================== */
 @media screen and (max-width: 1345px) {
-  main #container-cards{
+  main #container-cards,
+  main #pagination{
     width: calc(100% - 40px);
     margin: 20px;
     justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  main #container-cards .card:hover,
+  main #pagination button:hover{
+    transform: scale(1, 1);
   }
 }
