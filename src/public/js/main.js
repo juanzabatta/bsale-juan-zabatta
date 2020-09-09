@@ -303,4 +303,5 @@ function responsive() {
   renderPage(page);
 };
 
-document.addEventListener('resize', responsive());
+// When the dimensions of the window change, the number of products to be displayed per page is checked
+window.addEventListener('resize', () => responsive());
