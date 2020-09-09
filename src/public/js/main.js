@@ -7,6 +7,8 @@ const alertContainer = document.getElementById('alert-container');
 const pagination = document.getElementById('pagination');
 const menuDropDown = document.getElementById('menu-drop-down');
 const menuIcon = document.getElementById('menu-icon');
+const titleMain = document.getElementById('main-title');
+const menuCategory = document.getElementById('menu-category');
 let showMenu = false;
 let numOfProducts = 0;
 let productsForPage = 20;
@@ -24,20 +26,81 @@ if (document.domain === "bsale-juanzabatta.herokuapp.com") {
 // Show loading
 loading.style.display = "flex";
 
-// Get url Parameters
+// Get URL parameters for search
 const dataUrl = getParameterUrl();
 function getParameterUrl() {
   const data = location.search.slice(8, location.search.length)
   return data.replace('+', " ").replace('%2C', ",");
 };
+// Get URL path
+const path = window.location.pathname.slice(1, window.location.pathname.length);
 
 // Setting the url for the api consultation
-if (dataUrl === "") {
-  urlApi = "products";
+if (dataUrl === "" && path === "") {
+  // Route home
+  urlApi = "products/";
+  // Clear list Html and set title
+  titleCategory()
+
+} else if (dataUrl === "" && path !== "") {
+  // Route category
+  urlApi = "products/" + path;
+
+  // Clear list Html and set title
+  titleCategory();
+
 } else {
-  urlApi = "search/" + dataUrl;
+  // Route search
+  if (path === "") {
+    // Search in home
+    urlApi = "search/" + dataUrl;
+  } else {
+    // Search in category
+    urlApi = "search/" + path + '_' + dataUrl;
+
+  };
+  // Clear list Html and set title
+  titleCategory();
 };
 
+// Clear list Html and set title
+function titleCategory() {
+  console.log(path);
+  switch (path) {
+    case "bebida+energetica":
+      titleMain.textContent = `Bebidas Energéticas`;
+      break;
+
+    case "pisco":
+      titleMain.textContent = `Piscos`;
+      break;
+
+    case "ron":
+      titleMain.textContent = `Rones`;
+      break;
+
+    case "bebida":
+      titleMain.textContent = `Bebidas`;
+      break;
+
+    case "snack":
+      titleMain.textContent = `Snacks`;
+      break;
+
+    case "cerveza":
+      titleMain.textContent = `Cervezas`;
+      break;
+
+    case "vodka":
+      titleMain.textContent = `Vodkas`;
+      break;
+
+    default:
+      titleMain.textContent = `Todos los productos`;
+      break;
+
+  }
+}
 // Consult the api and write down the products
 getProducts()
   .then(db => {
@@ -56,15 +119,16 @@ getProducts()
         });
 
       } else {
+        listProduct.innerHTML = "";
         paginationNum();
         renderPage(page);
       }
 
-    }
-    //If results are not obtained
-    if (db && db === "Not result") {
+    } else {
+      //If results are not obtained
       listProduct.innerHTML = `<p>No se encontraron resultados.</p>`;
-    }
+    };
+
   });
 
 // Get products of API
@@ -138,17 +202,21 @@ function showAlert(title, message) {
 };
 
 // Show / Hidden menu in phone Views
-menuIcon.addEventListener('click', () => {
+menuIcon.addEventListener('click', () => showMenus());
+
+function showMenus() {
   showMenu = !showMenu;
 
   if (showMenu) {
     menuDropDown.style.display = "flex";
     menuIcon.classList.add('change');
+    menuCategory.style.display = "block";
   } else {
     menuDropDown.style.display = "none";
     menuIcon.classList.remove('change');
+    menuCategory.style.display = "none";
   };
-});
+}
 
 /* ========================================
 --------------- Pagination ----------------
@@ -252,9 +320,7 @@ function renderPage(pageAct) {
     };
   };
 
-  // Clear list Html
   listProduct.innerHTML = "";
-
   // Whrite products
   productsDisplay.forEach(product => {
     writeProducts(product);

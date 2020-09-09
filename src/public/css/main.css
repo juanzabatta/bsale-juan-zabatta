@@ -117,6 +117,36 @@ header #container-header .content-header a img{
 }
 
 /* ========================================
+---------- Navbar Menu category -----------
+=========================================== */
+nav ul{
+  display: flex;
+  height: 60px;
+  width: 80%;
+  flex-direction: row;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5px 0;
+}
+nav ul li a{
+  display: block;
+  height: auto;
+  width: auto;
+  padding: 10px;
+  margin: 5px;
+  background-color: #eee;
+  box-shadow: 0px 2px 4px #aaa inset, 0px 0px 8px #ddd inset;
+  color: #666;
+  text-align: center;
+  text-decoration: none;
+}
+nav ul li a:hover{
+  color: black;
+  text-decoration: underline;
+}
+
+/* ========================================
 ----------------- Footer ------------------
 =========================================== */
 footer{
@@ -144,11 +174,26 @@ footer #container-footer{
     width: calc(100% - 40px);
     margin: 20px;
   }
+  nav ul{
+    width: calc(100% - 40px);
+    margin: 0 20px;
+  }
+}
+@media screen and (max-width: 800px) {
+  nav ul li a:hover{
+  color: #666;
+  text-decoration: none;
+}
+}
+@media screen and (max-width: 736px) {
+  nav ul {
+    height: 120px;
+  }
 }
 @media screen and (max-width: 550px) {
   header{
     height: auto;
-    min-height: 100px;
+    min-height: 80px;
   }
   header #container-header{
     margin: auto;
@@ -158,13 +203,36 @@ footer #container-footer{
   header #container-header .content-header{
     width: 100%;
     justify-content: space-between;
-    padding: 35px 0;
+    padding: 25px 0;
   }
   header #container-header #menu-drop-down{
     display: none;
     padding-top: 0;
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    background-color: white;
   }
   header #container-header .content-header #menu-icon{
     display: inline-block;
   }
+  nav{
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 155px;
+    background-color: white;
+  }
+  nav ul{
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 5px 0;
+  }
+  nav ul li a{
+    width: calc(90% - 10px);
+    margin: 5px auto;
+  }
+
 }

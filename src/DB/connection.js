@@ -7,13 +7,6 @@ const pool = mysql.createPool({
   database: 'bsale_test'
 });
 
-// const pool = mysql.createPool({
-//   host: 'localhost',
-//   user: 'root',
-//   password: '',
-//   database: 'bsale'
-// });
-
 // Check connect DB
 pool.getConnection(function (err, connection) {
   if (err) {
