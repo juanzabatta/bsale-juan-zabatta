@@ -97,7 +97,7 @@ function writeProducts(product) {
   };
 
   listProduct.innerHTML += `
-          <a href="#" class="card">
+          <a href="" onClick="alert('Página no disponible.')" class="card">
             <picture class="card-img">
               <img src="${imageUrl}" alt="${product.name}" title="${product.name}" />
             </picture>
@@ -107,7 +107,7 @@ function writeProducts(product) {
             <div class="card-content">
               <p class="price">${price}</p>
 
-              <button>
+              <button >
                 <img src="./img/cart-icon.webp" alt="Agregar al carrito" title="Agregar" />
               </button>
             </div>
