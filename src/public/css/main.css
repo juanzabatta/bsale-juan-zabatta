@@ -147,9 +147,8 @@ footer #container-footer{
 }
 @media screen and (max-width: 550px) {
   header{
-    min-height: 100%;
     height: auto;
-    padding-top: 20px;
+    min-height: 100px;
   }
   header #container-header{
     margin: auto;
@@ -159,10 +158,11 @@ footer #container-footer{
   header #container-header .content-header{
     width: 100%;
     justify-content: space-between;
-    padding: 15px 0;
+    padding: 35px 0;
   }
   header #container-header #menu-drop-down{
     display: none;
+    padding-top: 0;
   }
   header #container-header .content-header #menu-icon{
     display: inline-block;
