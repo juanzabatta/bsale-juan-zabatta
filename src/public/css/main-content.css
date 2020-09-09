@@ -135,11 +135,14 @@ main #pagination .active{
 ---------------- Responsive ---------------
 =========================================== */
 @media screen and (max-width: 1345px) {
-  main #container-cards,
-  main #pagination{
+  main #container-cards{
     width: calc(100% - 40px);
     margin: 20px;
     justify-content: space-around;
+  }
+  main #pagination{
+    width: calc(100% - 40px);
+    margin: 20px;
   }
 }
 
