@@ -19,7 +19,7 @@ if (document.domain === "bsale-juanzabatta.herokuapp.com") {
   urlBaseApi = "https://bsale-juanzabatta.herokuapp.com/";
 } else {
   urlBaseApi = "http://localhost:3000/";
-}
+};
 
 // Show loading
 loading.style.display = "flex";
@@ -302,3 +302,5 @@ function responsive() {
 
   renderPage(page);
 };
+
+document.addEventListener('resize', responsive());
