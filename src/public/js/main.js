@@ -65,18 +65,17 @@ if (dataUrl === "" && path === "") {
 
 // Clear list Html and set title
 function titleCategory() {
-  console.log(path);
   switch (path) {
     case "bebida+energetica":
       titleMain.textContent = `Bebidas Energéticas`;
       break;
 
     case "pisco":
-      titleMain.textContent = `Piscos`;
+      titleMain.textContent = `Pisco`;
       break;
 
     case "ron":
-      titleMain.textContent = `Rones`;
+      titleMain.textContent = `Ron`;
       break;
 
     case "bebida":
@@ -92,7 +91,7 @@ function titleCategory() {
       break;
 
     case "vodka":
-      titleMain.textContent = `Vodkas`;
+      titleMain.textContent = `Vodka`;
       break;
 
     default:
@@ -321,10 +320,17 @@ function renderPage(pageAct) {
   };
 
   listProduct.innerHTML = "";
-  // Whrite products
-  productsDisplay.forEach(product => {
-    writeProducts(product);
-  });
+
+  if (db && db !== "Not result") {
+    // Whrite products
+    productsDisplay.forEach(product => {
+      writeProducts(product);
+    });
+  } else {
+    //If results are not obtained
+    listProduct.innerHTML = `<p>No se encontraron resultados.</p>`;
+  }
+  ;
 
   // Write the necessary buttons according to the number of pages
   paginationNum();
@@ -351,15 +357,14 @@ function pageActive() {
 
 // Determines the number of products per page, according to the width of the screen
 function responsive() {
-  let factor = 10;
 
-  if (listProduct.clientWidth <= 790 && listProduct.clientWidth > 779) {
-    factor = 20;
-  } else if (listProduct.clientWidth <= 1059 && listProduct.clientWidth > 1039) {
-    factor = 30;
-  }
-
-  productsForPage = Math.floor((listProduct.clientWidth) / (250 + factor)) * 5;
+  if (window.innerWidth >= 846 && window.innerWidth < 1116) {
+    productsForPage = 15;
+  } else if (window.innerWidth < 846) {
+    productsForPage = 10;
+  } else {
+    productsForPage = 20;
+  };
 
   // When one is in a small window on a high page number and goes to a large window whose previous page number does not exist, an error occurs, that solves it
   if (page > numPages()) {

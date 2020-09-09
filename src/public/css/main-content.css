@@ -24,18 +24,22 @@ main #main-title{
 -------------- List Products --------------
 =========================================== */
 main #container-cards{
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   width: 80%;
   margin: 20px auto;
   column-gap: 20px;
   row-gap: 50px;
-  flex-wrap: wrap;
-  justify-content: space-between;
+}
+/*********** Not result **********/
+main #container-cards p{
+  margin: auto;
 }
 main #container-cards .card{
   display: flex;
   height: 400px;
   width: 250px;
+  margin: auto;
   flex-direction: column;
   justify-content: center;
   background-color: white;
@@ -148,14 +152,27 @@ main #pagination .active{
   main #container-cards{
     width: calc(100% - 40px);
     margin: 20px;
-    justify-content: space-around;
   }
   main #pagination{
     width: calc(100% - 40px);
     margin: 20px;
   }
 }
-
+@media screen and (max-width: 1116px) {
+  main #container-cards{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 846px) {
+  main #container-cards{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 576px) {
+  main #container-cards{
+    grid-template-columns:  1fr;
+  }
+}
 @media screen and (max-width: 800px) {
   main #container-cards .card:hover,
   main #pagination button:hover{

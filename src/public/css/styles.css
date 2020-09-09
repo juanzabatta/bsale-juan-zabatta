@@ -182,16 +182,12 @@ footer #container-footer{
 }
 @media screen and (max-width: 800px) {
   nav ul li a:hover{
-  color: #666;
-  text-decoration: none;
-}
-}
-@media screen and (max-width: 736px) {
-  nav ul {
-    height: 120px;
+    color: #666;
+    text-decoration: none;
   }
 }
-@media screen and (max-width: 550px) {
+
+@media screen and (max-width: 700px) {
   header{
     height: auto;
     min-height: 80px;
@@ -208,10 +204,10 @@ footer #container-footer{
   }
   header #container-header #menu-drop-down{
     display: none;
-    padding-top: 0;
     position: absolute;
     top: 80px;
     width: 100%;
+    padding: 0px calc(10% + 15px) 25px calc(10% + 15px);
     background-color: white;
   }
   header #container-header .content-header #menu-icon{
@@ -232,7 +228,7 @@ footer #container-footer{
     padding: 5px 0;
   }
   nav ul li a{
-    width: calc(90% - 10px);
+    width: 80%;
     margin: 5px auto;
   }
 
