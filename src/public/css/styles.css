@@ -136,8 +136,8 @@ nav ul li a{
   width: auto;
   padding: 10px;
   margin: 5px;
-  background-color: #eee;
-  box-shadow: 0px 2px 4px #aaa inset, 0px 0px 8px #ddd inset;
+  /* background-color: #eee;
+  box-shadow: 0px 2px 4px #aaa inset, 0px 0px 8px #ddd inset; */
   color: #666;
   text-align: center;
   text-decoration: none;
